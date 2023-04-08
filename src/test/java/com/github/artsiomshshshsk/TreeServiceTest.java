@@ -30,7 +30,16 @@ class TreeServiceTest {
 
     @Test
     public void testCountLeavesTreeWithMultipleLeaves() {
-        TreeNode node = new TreeNode(10, new TreeNode(20), new TreeNode(30));
+        /*
+         * Test tree:
+         *        10
+         *       /  \
+         *      20  30
+         */
+        TreeNode node = new TreeNode(10,
+                new TreeNode(20),
+                new TreeNode(30)
+        );
         int count = service.countLeaves(node);
         assertEquals(2, count);
     }
