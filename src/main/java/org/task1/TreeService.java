@@ -2,8 +2,6 @@ package org.task1;
 
 public class TreeService {
 
-
-
     /**
      * Calculate number of all leaves (nodes without children)
      *
