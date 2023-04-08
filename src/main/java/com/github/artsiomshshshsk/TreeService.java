@@ -13,8 +13,7 @@ public class TreeService {
     public int countLeaves(TreeNode node){
         if(node == null) return 0;
         if(node.getLeft() == null && node.getRight() == null) return 1;
-        return countLeaves(node.getLeft()) + countLeaves(node.getRight()) +
-                (node.getLeft() == null && node.getRight() == null ? 1 : 0);
+        return countLeaves(node.getLeft()) + countLeaves(node.getRight());
     }
 
 
