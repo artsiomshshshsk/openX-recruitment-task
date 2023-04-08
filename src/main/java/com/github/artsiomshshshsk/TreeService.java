@@ -1,4 +1,6 @@
-package org.task1;
+package com.github.artsiomshshshsk;
+
+import com.github.artsiomshshshsk.TreeNode;
 
 public class TreeService {
 

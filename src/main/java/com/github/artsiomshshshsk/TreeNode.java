@@ -1,4 +1,4 @@
-package org.task1;
+package com.github.artsiomshshshsk;
 
 import lombok.Getter;
 
