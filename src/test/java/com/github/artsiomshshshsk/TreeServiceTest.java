@@ -112,6 +112,93 @@ class TreeServiceTest {
         assertEquals(2, longestPath);
     }
 
+    @Test
+    void testCheckForEquality() {
+        /*
+         * Test trees:
+         * Tree 1       Tree 2
+         *   10            10
+         *  /  \             \
+         * 20  30            30
+         *                    \
+         *                    40
+         */
+        TreeNode tree1 = new TreeNode(10,
+                new TreeNode(20),
+                new TreeNode(30)
+        );
+        TreeNode tree2 = new TreeNode(10,
+                null,
+                new TreeNode(30,
+                        null,
+                        new TreeNode(40))
+        );
+
+        TreeService treeService = new TreeService();
+        boolean isEqual = treeService.checkForEquality(tree1, tree2);
+        assertFalse(isEqual);
+    }
+
+    @Test
+    void testCheckForEqualityNullNodes() {
+        TreeService treeService = new TreeService();
+        boolean isEqual = treeService.checkForEquality(null, null);
+        assertTrue(isEqual);
+    }
+
+    @Test
+    void testCheckForEqualityOneNullNode() {
+        TreeNode node = new TreeNode(1);
+        TreeService treeService = new TreeService();
+        boolean isEqual = treeService.checkForEquality(node, null);
+
+        assertFalse(isEqual);
+    }
+
+    @Test
+    void testCheckForEqualitySameNodes() {
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(1);
+        TreeService treeService = new TreeService();
+        boolean isEqual = treeService.checkForEquality(node1, node2);
+
+        assertTrue(isEqual);
+    }
+
+    @Test
+    void testCheckForEqualityDifferentNodes() {
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeService treeService = new TreeService();
+        boolean isEqual = treeService.checkForEquality(node1, node2);
+
+        assertFalse(isEqual);
+    }
+
+
+    @Test
+    void testCheckForEqualitySameTrees() {
+        /*
+         * Test trees:
+         * Tree 1       Tree 2
+         *   10            10
+         *  /  \          /  \
+         * 20  30        20  30
+         */
+        TreeNode tree1 = new TreeNode(10,
+                new TreeNode(20),
+                new TreeNode(30)
+        );
+        TreeNode tree2 = new TreeNode(10,
+                new TreeNode(20),
+                new TreeNode(30)
+        );
+
+        TreeService treeService = new TreeService();
+        boolean isEqual = treeService.checkForEquality(tree1, tree2);
+        assertTrue(isEqual);
+    }
+
 
 
 }
