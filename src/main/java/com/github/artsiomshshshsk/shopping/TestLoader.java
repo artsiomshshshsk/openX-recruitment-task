@@ -19,22 +19,7 @@ import java.util.stream.Collectors;
 
 public class TestLoader {
 
-    private ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-    public List<User> parseUsers(String url) throws IOException {
-        User[] users = mapper.readValue(new URL(url), User[].class);
-        return List.of(users);
-    }
-
-    public List<Cart> parseCarts(String url) throws IOException {
-        Cart[] carts = mapper.readValue(new URL(url), Cart[].class);
-        return List.of(carts);
-    }
-
-    public List<Product> parseProducts(String url) throws IOException {
-        Product[] products = mapper.readValue(new URL(url), Product[].class);
-        return List.of(products);
-    }
 
     public Map<String, BigDecimal> productCategoriesTotalValue(List<Product> products) throws IOException {
         return products.stream()
@@ -70,27 +55,5 @@ public class TestLoader {
     }
 
 
-
-    public List<User> find2UsersWithMaxDistance(List<User> users) throws IOException {
-        if(users.size() < 2){
-            throw new IllegalArgumentException("List of users should contain at least 2 users");
-        }
-
-        double maxDistance = Double.MIN_VALUE;
-        User user1 = null;
-        User user2 = null;
-
-        for (int i = 0; i < users.size(); i++) {
-            for (int j = i + 1; j < users.size(); j++) {
-                double distance = Util.distance(users.get(i).getGeolocation(),users.get(j).getGeolocation());
-                if (distance > maxDistance) {
-                    maxDistance = distance;
-                    user1 = users.get(i);
-                    user2 = users.get(j);
-                }
-            }
-        }
-        return List.of(user1, user2);
-    }
 
 }
