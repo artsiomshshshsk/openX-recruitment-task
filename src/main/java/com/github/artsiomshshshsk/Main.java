@@ -7,7 +7,6 @@ import com.github.artsiomshshshsk.shopping.service.CartService;
 import com.github.artsiomshshshsk.shopping.service.ProductService;
 import com.github.artsiomshshshsk.shopping.service.UserService;
 import com.github.artsiomshshshsk.shopping.util.Parser;
-import com.github.artsiomshshshsk.shopping.util.ParserImpl;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,7 +16,7 @@ public class Main {
 
         System.out.println("_______________FURTHEST USERS_______________");
 
-        Parser parser = new ParserImpl();
+        Parser parser = new Parser();
         List<User> users = parser.parseUsers("https://fakestoreapi.com/users");
 
         UserService userService = new UserService(users);
