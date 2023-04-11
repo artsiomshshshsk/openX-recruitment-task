@@ -7,12 +7,15 @@ import com.github.artsiomshshshsk.shopping.model.product.Product;
 import com.github.artsiomshshshsk.shopping.model.user.User;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TestLoader {
 
-    ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    private ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     public List<User> parseUsers(String url) throws IOException {
         User[] users = mapper.readValue(new URL(url), User[].class);
@@ -27,5 +30,11 @@ public class TestLoader {
     public List<Product> parseProducts(String url) throws IOException {
         Product[] products = mapper.readValue(new URL(url), Product[].class);
         return List.of(products);
+    }
+
+    public Map<String, BigDecimal> productCategoriesTotalValue(List<Product> products) throws IOException {
+        return products.stream()
+                .collect(Collectors.groupingBy(Product::getCategory, Collectors.reducing(BigDecimal.ZERO,
+                        Product::getPrice, BigDecimal::add)));
     }
 }

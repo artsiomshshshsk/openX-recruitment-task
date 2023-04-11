@@ -1,9 +1,7 @@
 package com.github.artsiomshshshsk;
 
 import com.github.artsiomshshshsk.shopping.TestLoader;
-import com.github.artsiomshshshsk.shopping.model.cart.Cart;
 import com.github.artsiomshshshsk.shopping.model.product.Product;
-import com.github.artsiomshshshsk.shopping.model.user.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,10 +18,13 @@ public class Main {
 //            System.out.println(cart);
 //        }
 
-        List<Product> products = testLoader.parseProducts("https://fakestoreapi.com/products");
-        for (Product product : products) {
-            System.out.println(product);
-        }
+//
+//        List<Product> products = testLoader.parseProducts("https://fakestoreapi.com/products");
+//        for (Product product : products) {
+//            System.out.println(product);
+//        }
+
+        testLoader.task1();
 
 
     }
