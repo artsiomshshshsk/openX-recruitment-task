@@ -1,30 +1,22 @@
 package com.github.artsiomshshshsk.shopping.service;
 
 import com.github.artsiomshshshsk.shopping.model.user.User;
-import com.github.artsiomshshshsk.shopping.util.Parser;
-import com.github.artsiomshshshsk.shopping.util.ParserImpl;
 import com.github.artsiomshshshsk.shopping.util.Util;
 
 import java.util.List;
-import java.util.Optional;
 
-public class UserService {
+public record UserService(
+        List<User> users
+) {
 
-    private final List<User> users;
-
-    private final Parser parser;
-
-    public UserService(String url){
-        parser = new ParserImpl();
-        users = parser.parseUsers(url);
-    }
-
-    public Optional<User> findUserById(long id){
+    public User findUserById(long id){
         return users.stream()
                 .filter(user -> user.getId() == id)
-                .findFirst();
+                .findFirst()
+                .orElseThrow(
+                        ()-> new IllegalArgumentException("User with id " + id + " not found")
+                );
     }
-
 
     public List<User> find2UsersWithMaxDistance() {
         if(users.size() < 2){

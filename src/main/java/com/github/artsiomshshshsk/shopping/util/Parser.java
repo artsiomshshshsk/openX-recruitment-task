@@ -4,8 +4,6 @@ import com.github.artsiomshshshsk.shopping.model.cart.Cart;
 import com.github.artsiomshshshsk.shopping.model.product.Product;
 import com.github.artsiomshshshsk.shopping.model.user.User;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 public interface Parser {
