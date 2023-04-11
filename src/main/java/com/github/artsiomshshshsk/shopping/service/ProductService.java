@@ -12,6 +12,10 @@ public record ProductService(
 ) {
 
 
+    /**
+     * Returns a map of product categories and their total value
+     * @return Map<String, BigDecimal>
+     */
     public Map<String, BigDecimal> productCategoriesTotalValue() {
         return products.stream()
                 .collect(Collectors.groupingBy(Product::getCategory, Collectors.reducing(BigDecimal.ZERO,

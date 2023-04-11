@@ -1,5 +1,6 @@
 package com.github.artsiomshshshsk;
 
+import com.github.artsiomshshshsk.shopping.model.cart.Cart;
 import com.github.artsiomshshshsk.shopping.model.product.Product;
 import com.github.artsiomshshshsk.shopping.model.user.User;
 import com.github.artsiomshshshsk.shopping.service.CartService;
@@ -19,8 +20,8 @@ public class Main {
         Parser parser = new ParserImpl();
         List<User> users = parser.parseUsers("https://fakestoreapi.com/users");
 
-        UserService service = new UserService(users);
-        List<User> maxDistUsers = service.find2UsersWithMaxDistance();
+        UserService userService = new UserService(users);
+        List<User> maxDistUsers = userService.find2UsersWithMaxDistance();
 
         for (User user : maxDistUsers) {
             System.out.println(user);
@@ -33,11 +34,13 @@ public class Main {
         ProductService productService = new ProductService(products);
         productService.productCategoriesTotalValue().forEach((k, v) -> System.out.println(k + " : " + v));
 
-//
-//        System.out.println("_______________CART WITH HIGHEST VALUE_______________");
-//
-//        CartService cartService = new CartService("https://fakestoreapi.com/carts");
-//        System.out.println(cartService.findCartWithHighestValue());
+
+        System.out.println("_______________CART WITH HIGHEST VALUE_______________");
+
+        List<Cart> carts = parser.parseCarts("https://fakestoreapi.com/carts");
+
+        CartService cartService = new CartService(carts,productService, userService);
+        System.out.println(cartService.findCartWithHighestValue());
 
 
     }

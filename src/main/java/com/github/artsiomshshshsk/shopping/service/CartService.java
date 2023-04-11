@@ -2,10 +2,7 @@ package com.github.artsiomshshshsk.shopping.service;
 
 import com.github.artsiomshshshsk.shopping.model.cart.Cart;
 import com.github.artsiomshshshsk.shopping.model.cart.CartResponse;
-import com.github.artsiomshshshsk.shopping.model.product.Product;
 import com.github.artsiomshshshsk.shopping.model.user.User;
-import com.github.artsiomshshshsk.shopping.util.Parser;
-import com.github.artsiomshshshsk.shopping.util.ParserImpl;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,7 +16,10 @@ public record CartService(
         UserService userService
 ) {
 
-
+    /**
+     * Returns a cart with the highest value
+     * @return CartResponse
+     */
     public CartResponse findCartWithHighestValue(){
 
         Map<Cart, BigDecimal> cartToTotalValue = getCartToTotalValue();
@@ -33,6 +33,11 @@ public record CartService(
                 .build();
     }
 
+
+    /**
+     * Returns a map of carts and their total value
+     * @return Map<Cart, BigDecimal>
+     */
     private Map<Cart, BigDecimal> getCartToTotalValue() {
         return carts.stream()
                 .collect(Collectors.toMap(Function.identity(), cart -> cart.getProducts().stream()
@@ -44,6 +49,11 @@ public record CartService(
                         .reduce(BigDecimal.ZERO, BigDecimal::add)));
     }
 
+    /**
+     * @param cartToTotalValue
+     * Returns a cart with the highest value
+     * @return
+     */
     private Cart getMaxValueCart(Map<Cart, BigDecimal> cartToTotalValue) {
         return cartToTotalValue.entrySet().stream()
                 .max(Map.Entry.comparingByValue())
