@@ -25,6 +25,7 @@ public class Main {
         for (User user : maxDistUsers) {
             System.out.println("User: " + user.getName() + " " + user.getGeolocation());
         }
+        System.out.println();
 
 
         System.out.println("_______________PRODUCTS BY CATEGORIES WITH TOTAL VALUE FOR EACH CATEGORY_______________");
@@ -33,6 +34,8 @@ public class Main {
         ProductService productService = new ProductService(products);
         productService.productCategoriesTotalValue().forEach((k, v) -> System.out.println(k + " : " + v));
 
+        System.out.println();
+
 
         System.out.println("_______________CART WITH HIGHEST VALUE_______________");
 
@@ -40,6 +43,7 @@ public class Main {
 
         CartService cartService = new CartService(carts,productService, userService);
         System.out.println(cartService.findCartWithHighestValue());
+        System.out.println();
 
     }
 }
