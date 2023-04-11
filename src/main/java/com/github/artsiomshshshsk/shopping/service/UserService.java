@@ -3,7 +3,9 @@ package com.github.artsiomshshshsk.shopping.service;
 import com.github.artsiomshshshsk.shopping.model.user.User;
 import com.github.artsiomshshshsk.shopping.util.Util;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public record UserService(
         List<User> users
