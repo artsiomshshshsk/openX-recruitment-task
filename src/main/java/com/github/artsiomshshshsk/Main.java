@@ -1,7 +1,7 @@
 package com.github.artsiomshshshsk;
 
 import com.github.artsiomshshshsk.shopping.TestLoader;
-import com.github.artsiomshshshsk.shopping.model.User;
+import com.github.artsiomshshshsk.shopping.model.user.User;
 
 import java.io.IOException;
 import java.util.List;

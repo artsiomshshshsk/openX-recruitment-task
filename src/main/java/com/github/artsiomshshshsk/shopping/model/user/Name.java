@@ -1,4 +1,4 @@
-package com.github.artsiomshshshsk.shopping.model;
+package com.github.artsiomshshshsk.shopping.model.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
