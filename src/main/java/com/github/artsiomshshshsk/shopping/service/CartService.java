@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -48,7 +47,7 @@ public class CartService {
                 .collect(Collectors.toMap(
                         Function.identity(),
                         cart -> cart.getProducts().stream()
-                            .map(product -> productService.products().stream()
+                            .map(product -> productService.getProducts().stream()
                                     .filter(product1 -> product1.getId() == product.getProductId())
                                     .findFirst()
                                     .orElseThrow()
@@ -68,39 +67,8 @@ public class CartService {
                 .getKey();
     }
 
-    public List<Cart> carts() {
+    public List<Cart> getCarts() {
         return carts;
-    }
-
-    public ProductService productService() {
-        return productService;
-    }
-
-    public UserService userService() {
-        return userService;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (CartService) obj;
-        return Objects.equals(this.carts, that.carts) &&
-                Objects.equals(this.productService, that.productService) &&
-                Objects.equals(this.userService, that.userService);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carts, productService, userService);
-    }
-
-    @Override
-    public String toString() {
-        return "CartService[" +
-                "carts=" + carts + ", " +
-                "productService=" + productService + ", " +
-                "userService=" + userService + ']';
     }
 
 }

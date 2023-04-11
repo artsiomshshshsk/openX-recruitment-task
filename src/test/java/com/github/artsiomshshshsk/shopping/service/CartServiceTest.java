@@ -25,9 +25,9 @@ class CartServiceTest {
     @BeforeEach
     void setUp() {
         userServiceMock = Mockito.mock(UserService.class);
-        when(userServiceMock.users()).thenReturn(getUserList());
+        when(userServiceMock.getUsers()).thenReturn(getUserList());
         productServiceMock = Mockito.mock(ProductService.class);
-        when(productServiceMock.products()).thenReturn(getProductList());
+        when(productServiceMock.getProducts()).thenReturn(getProductList());
         cartService = new CartService(
                 getCartList(),
                 productServiceMock,

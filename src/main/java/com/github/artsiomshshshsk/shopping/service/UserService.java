@@ -5,7 +5,6 @@ import com.github.artsiomshshshsk.shopping.util.GeolocationUtils;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 public class UserService {
@@ -56,27 +55,8 @@ public class UserService {
         return List.of(user1, user2);
     }
 
-    public List<User> users() {
+    public List<User> getUsers() {
         return users;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (UserService) obj;
-        return Objects.equals(this.users, that.users);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(users);
-    }
-
-    @Override
-    public String toString() {
-        return "UserService[" +
-                "users=" + users + ']';
     }
 
 }
