@@ -1,7 +1,7 @@
 
 # Java Recruitment Task
 
-## Build 
+## Build Jar
 
 ### Linux / Mac
 ```bash
@@ -41,4 +41,4 @@
 - `Mockito` - mocking objects for unit testing
 
 
-# Thank you for you time and consideration!
+# Thank you for your time and consideration!
