@@ -21,11 +21,7 @@ public class TestLoader {
 
 
 
-    public Map<String, BigDecimal> productCategoriesTotalValue(List<Product> products) throws IOException {
-        return products.stream()
-                .collect(Collectors.groupingBy(Product::getCategory, Collectors.reducing(BigDecimal.ZERO,
-                        Product::getPrice, BigDecimal::add)));
-    }
+
 
     public CartResponse findCartWithHighestValue(List<Cart> carts, List<Product> products, List<User> users){
         Map<Cart, BigDecimal> cartToTotalValue = carts.stream()

@@ -12,9 +12,10 @@ public class UserService {
 
     private final List<User> users;
 
-    private final Parser parser = new ParserImpl();
+    private final Parser parser;
 
     public UserService(String url){
+        parser = new ParserImpl();
         users = parser.parseUsers(url);
     }
 
