@@ -48,5 +48,11 @@ This instruction will help you to run the project on your local machine for test
 - `JUnit` - unit testing
 - `Mockito` - mocking objects for unit testing
 
+## Project structure
+
+- `src/main/java/com/github/artsiomshshshsk/tree` - source code for task 1
+- `src/main/java/com/github/artsiomshshshsk/shopping` - source code for task 2
+- `src/test/java/com/github/artsiomshshshsk/tree` - unit tests for task 1
+- `src/test/java/com/github/artsiomshshshsk/shopping` - unit tests for task 2
 
 # Thank you for your time and consideration!
