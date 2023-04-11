@@ -1,36 +1,39 @@
 package com.github.artsiomshshshsk.shopping.service;
 
 import com.github.artsiomshshshsk.shopping.model.user.User;
-import com.github.artsiomshshshsk.shopping.util.Util;
+import com.github.artsiomshshshsk.shopping.util.GeolocationUtils;
+import lombok.AllArgsConstructor;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Objects;
 
-public record UserService(
-        List<User> users
-) {
+@AllArgsConstructor
+public class UserService {
+
+    private final List<User> users;
 
     /**
      * Find user by id
+     *
      * @param id user id
      * @return user
      */
-    public User findUserById(long id){
+    public User findUserById(long id) {
         return users.stream()
                 .filter(user -> user.getId() == id)
                 .findFirst()
                 .orElseThrow(
-                        ()-> new IllegalArgumentException("User with id " + id + " not found")
+                        () -> new IllegalArgumentException("User with id " + id + " not found")
                 );
     }
 
     /**
      * Find 2 users with max distance between them
+     *
      * @return list of 2 users
      */
     public List<User> find2UsersWithMaxDistance() {
-        if(users.size() < 2){
+        if (users.size() < 2) {
             throw new IllegalArgumentException("List of users should contain at least 2 users");
         }
 
@@ -42,7 +45,7 @@ public record UserService(
             for (int j = i + 1; j < users.size(); j++) {
                 User checkUser1 = users.get(i);
                 User checkUser2 = users.get(j);
-                double distance = Util.distance(checkUser1.getGeolocation(),checkUser2.getGeolocation());
+                double distance = GeolocationUtils.distance(checkUser1.getGeolocation(), checkUser2.getGeolocation());
                 if (distance > maxDistance) {
                     maxDistance = distance;
                     user1 = checkUser1;
@@ -52,4 +55,28 @@ public record UserService(
         }
         return List.of(user1, user2);
     }
+
+    public List<User> users() {
+        return users;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        var that = (UserService) obj;
+        return Objects.equals(this.users, that.users);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(users);
+    }
+
+    @Override
+    public String toString() {
+        return "UserService[" +
+                "users=" + users + ']';
+    }
+
 }

@@ -2,7 +2,7 @@ package com.github.artsiomshshshsk.shopping.util;
 
 import com.github.artsiomshshshsk.shopping.model.user.Geolocation;
 
-public class Util {
+public class GeolocationUtils {
 
     private final static double EARTH_RADIUS = 6371; //kilometers
 
@@ -18,7 +18,6 @@ public class Util {
                 Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
                         Math.sin(dLng/2) * Math.sin(dLng/2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        double dist = EARTH_RADIUS * c;
-        return dist;
+        return EARTH_RADIUS * c;
     }
 }
