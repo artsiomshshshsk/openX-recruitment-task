@@ -1,7 +1,9 @@
 package com.github.artsiomshshshsk;
 
 import com.github.artsiomshshshsk.shopping.TestLoader;
+import com.github.artsiomshshshsk.shopping.model.cart.Cart;
 import com.github.artsiomshshshsk.shopping.model.product.Product;
+import com.github.artsiomshshshsk.shopping.model.user.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,7 +26,13 @@ public class Main {
 //            System.out.println(product);
 //        }
 
-        testLoader.task1();
+//        testLoader.task1();
+
+        List<User> users = testLoader.parseUsers("https://fakestoreapi.com/users");
+        List<Product> products = testLoader.parseProducts("https://fakestoreapi.com/products");
+        List<Cart> carts = testLoader.parseCarts("https://fakestoreapi.com/carts");
+
+        System.out.println(testLoader.findCartWithHighestValue(carts, products, users));
 
 
     }
