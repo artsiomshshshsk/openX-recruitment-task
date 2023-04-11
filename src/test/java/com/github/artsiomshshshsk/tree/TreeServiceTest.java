@@ -1,4 +1,4 @@
-package com.github.artsiomshshshsk;
+package com.github.artsiomshshshsk.tree;
 
 import com.github.artsiomshshshsk.tree.TreeNode;
 import com.github.artsiomshshshsk.tree.TreeService;
