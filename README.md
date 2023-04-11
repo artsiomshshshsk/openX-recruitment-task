@@ -11,24 +11,24 @@ This instruction will help you to run the project on your local machine for test
 
 ### Build Jar
 
-#### Linux / Mac
+- #### Linux / Mac
 ```bash
   ./mvnw clean package
 ```
 
-#### Windows
+- #### Windows
 ```bash
   mvnw.cmd clean package
 ```
 
 ### Run tests
 
-#### Linux / Mac
+- #### Linux / Mac
 ```bash
   ./mvnw test
 ```
 
-#### Windows
+- #### Windows
 ```bash
   mvnw.cmd test
 ```
