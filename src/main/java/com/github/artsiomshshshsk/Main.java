@@ -1,12 +1,17 @@
 package com.github.artsiomshshshsk;
 
 import com.github.artsiomshshshsk.shopping.TestLoader;
+import com.github.artsiomshshshsk.shopping.model.User;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         TestLoader testLoader = new TestLoader();
-        testLoader.parseUsers("https://fakestoreapi.com/users");
+        List<User> users = testLoader.parseUsers("https://fakestoreapi.com/users");
+        for (User user : users) {
+            System.out.println(user);
+        }
     }
 }

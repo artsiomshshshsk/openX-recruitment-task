@@ -18,4 +18,6 @@ public class User {
     private Name name;
 
     private String phone;
+
+    private int __v;
 }
