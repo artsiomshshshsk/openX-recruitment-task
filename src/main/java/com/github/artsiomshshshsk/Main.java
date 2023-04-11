@@ -23,7 +23,7 @@ public class Main {
         List<User> maxDistUsers = userService.find2UsersWithMaxDistance();
 
         for (User user : maxDistUsers) {
-            System.out.println(user);
+            System.out.println("User: " + user.getName() + " " + user.getGeolocation());
         }
 
 
@@ -40,7 +40,6 @@ public class Main {
 
         CartService cartService = new CartService(carts,productService, userService);
         System.out.println(cartService.findCartWithHighestValue());
-
 
     }
 }
