@@ -2,9 +2,11 @@ package com.github.artsiomshshshsk;
 
 import com.github.artsiomshshshsk.shopping.TestLoader;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         TestLoader testLoader = new TestLoader();
-        testLoader.run();
+        testLoader.parseUsers("https://fakestoreapi.com/users");
     }
 }
