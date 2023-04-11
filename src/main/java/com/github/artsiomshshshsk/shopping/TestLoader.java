@@ -5,7 +5,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.artsiomshshshsk.shopping.model.cart.CartResponse;
 import com.github.artsiomshshshsk.shopping.model.cart.Cart;
 import com.github.artsiomshshshsk.shopping.model.product.Product;
+import com.github.artsiomshshshsk.shopping.model.user.Geolocation;
 import com.github.artsiomshshshsk.shopping.model.user.User;
+import com.github.artsiomshshshsk.shopping.util.Util;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -66,4 +68,29 @@ public class TestLoader {
                 .ownerName(user.getName())
                 .build();
     }
+
+
+
+    public List<User> find2UsersWithMaxDistance(List<User> users) throws IOException {
+        if(users.size() < 2){
+            throw new IllegalArgumentException("List of users should contain at least 2 users");
+        }
+
+        double maxDistance = Double.MIN_VALUE;
+        User user1 = null;
+        User user2 = null;
+
+        for (int i = 0; i < users.size(); i++) {
+            for (int j = i + 1; j < users.size(); j++) {
+                double distance = Util.distance(users.get(i).getGeolocation(),users.get(j).getGeolocation());
+                if (distance > maxDistance) {
+                    maxDistance = distance;
+                    user1 = users.get(i);
+                    user2 = users.get(j);
+                }
+            }
+        }
+        return List.of(user1, user2);
+    }
+
 }

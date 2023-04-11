@@ -32,7 +32,10 @@ public class Main {
         List<Product> products = testLoader.parseProducts("https://fakestoreapi.com/products");
         List<Cart> carts = testLoader.parseCarts("https://fakestoreapi.com/carts");
 
-        System.out.println(testLoader.findCartWithHighestValue(carts, products, users));
+//        System.out.println(testLoader.findCartWithHighestValue(carts, products, users));
+        for(User user : testLoader.find2UsersWithMaxDistance(users)){
+            System.out.println(user);
+        }
 
 
     }

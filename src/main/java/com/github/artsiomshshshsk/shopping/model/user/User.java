@@ -20,4 +20,8 @@ public class User {
     private String phone;
 
     private int __v;
+
+    public Geolocation getGeolocation() {
+        return address.getGeolocation();
+    }
 }
