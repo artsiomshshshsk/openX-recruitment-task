@@ -1,26 +1,34 @@
 
 # Java Recruitment Task
 
-## Build Jar
 
-### Linux / Mac
+## Getting Started 
+
+This instruction will help you to run the project on your local machine for testing purposes.
+
+### Prerequisites
+- Java 17
+
+### Build Jar
+
+#### Linux / Mac
 ```bash
   ./mvnw clean package
 ```
 
-### Windows
+#### Windows
 ```bash
   mvnw.cmd clean package
 ```
 
-## Run tests
+### Run tests
 
-### Linux / Mac
+#### Linux / Mac
 ```bash
   ./mvnw test
 ```
 
-### Windows
+#### Windows
 ```bash
   mvnw.cmd test
 ```
