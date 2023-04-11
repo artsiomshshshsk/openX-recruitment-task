@@ -1,4 +1,4 @@
-package com.github.artsiomshshshsk;
+package com.github.artsiomshshshsk.tree;
 
 public class TreeService {
 

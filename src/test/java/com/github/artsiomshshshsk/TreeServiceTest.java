@@ -1,5 +1,7 @@
 package com.github.artsiomshshshsk;
 
+import com.github.artsiomshshshsk.tree.TreeNode;
+import com.github.artsiomshshshsk.tree.TreeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,20 +18,20 @@ class TreeServiceTest {
 
 
     @Test
-    public void testCountLeavesSingleNode() {
+    void testCountLeavesSingleNode() {
         TreeNode tree = new TreeNode(5);
         assertEquals(1, service.countLeaves(tree));
     }
 
     @Test
-    public void testCountLeavesTreeWithOneLeaf() {
+    void testCountLeavesTreeWithOneLeaf() {
         TreeNode node = new TreeNode(10, new TreeNode(20), null);
         int count = service.countLeaves(node);
         assertEquals(1, count);
     }
 
     @Test
-    public void testCountLeavesTreeWithMultipleLeaves() {
+    void testCountLeavesTreeWithMultipleLeaves() {
         /*
          * Test tree:
          *        10
@@ -45,7 +47,7 @@ class TreeServiceTest {
     }
 
     @Test
-    public void testCountLeavesForNullTree() {
+    void testCountLeavesForNullTree() {
         TreeNode node = null;
         int count = service.countLeaves(node);
         assertEquals(0, count);
